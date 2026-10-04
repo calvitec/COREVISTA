@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0a0e27">
+    <meta name="description" content="At the intersection of modern innovation and technical precision, COREVISTA SOFTWARE LLC builds advanced software applications, digital platforms, and tailored technology solutions for businesses and consumers.">
+    <title>COREVISTA SOFTWARE LLC — Software &amp; AI Engineering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #0a0e27;
+            --surface: #0e1431;
+            --surface-raised: rgba(18, 26, 57, .76);
+            --text: #f7f9ff;
+            --muted: #a5aec8;
+            --blue: #3b82f6;
+            --cyan: #06b6d4;
+            --line: rgba(174, 196, 255, .14);
+            --font-heading: "Space Grotesk", sans-serif;
+            --font-body: "Inter", sans-serif;
+            --font-code: "JetBrains Mono", monospace;
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            line-height: 1.65;
+        }
+        a { color: inherit; text-decoration: none; }
+        button, input, textarea { font: inherit; }
+        .container { width: min(1160px, calc(100% - 48px)); margin-inline: auto; }
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: #82c5ff;
+            font-size: .76rem;
+            font-weight: 700;
+            letter-spacing: .16em;
+            text-transform: uppercase;
+        }
+        .eyebrow::before { width: 21px; height: 1px; background: var(--cyan); content: ""; }
+        .section { padding: 108px 0; }
+        .section-heading { max-width: 680px; margin-bottom: 46px; }
+        .section-heading h2 {
+            margin: 13px 0 14px;
+            font: 600 clamp(2.1rem, 4vw, 3.2rem)/1.12 var(--font-heading);
+            letter-spacing: -.045em;
+        }
+        .section-heading p { margin: 0; color: var(--muted); font-size: 1.04rem; }
+        .gradient-text {
+            color: transparent;
+            background: linear-gradient(100deg, #fff 2%, #79b8ff 45%, #30d9e8 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+        .topbar {
+            position: sticky;
+            z-index: 10;
+            top: 0;
+            border-bottom: 1px solid var(--line);
+            background: rgba(10, 14, 39, .78);
+            backdrop-filter: blur(18px);
+        }
+        .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+        .brand { display: inline-flex; align-items: center; gap: 12px; min-width: 0; }
+        .brand-mark {
+            display: grid;
+            width: 40px;
+            height: 40px;
+            place-items: center;
+            border: 1px solid rgba(84, 160, 255, .55);
+            border-radius: 12px;
+            background: linear-gradient(145deg, rgba(59, 130, 246, .3), rgba(6, 182, 212, .12));
+            color: #8bdcff;
+            box-shadow: 0 0 30px rgba(59, 130, 246, .16);
+        }
+        .brand-name { font: 700 .96rem var(--font-heading); letter-spacing: .07em; }
+        .brand-sub { color: #8590b0; font: 500 .59rem var(--font-code); letter-spacing: .12em; }
+        .nav-links { display: flex; align-items: center; gap: 30px; color: #c0c8de; font-size: .88rem; }
+        .nav-links a:not(.button):hover { color: white; }
+        .menu-toggle { display: none; border: 1px solid var(--line); border-radius: 10px; background: transparent; color: white; padding: 10px 12px; }
+        .button {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid transparent;
+            border-radius: 11px;
+            padding: 13px 19px;
+            font-size: .91rem;
+            font-weight: 700;
+            transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+        }
+        .button:hover { transform: translateY(-2px); }
+        .button-primary {
+            color: white;
+            background: linear-gradient(110deg, #2563eb, #0891b2);
+            box-shadow: 0 9px 32px rgba(37, 99, 235, .24);
+        }
+        .button-primary:hover { box-shadow: 0 12px 38px rgba(6, 182, 212, .32); }
+        .button-secondary { border-color: rgba(153, 181, 255, .25); background: rgba(255,255,255,.035); color: #ecf2ff; }
+        .hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            padding: 92px 0 104px;
+            background-image:
+                linear-gradient(rgba(131, 159, 255, .045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(131, 159, 255, .045) 1px, transparent 1px);
+            background-size: 52px 52px;
+        }
+        .hero::before, .hero::after {
+            position: absolute;
+            width: 510px;
+            height: 510px;
+            border-radius: 50%;
+            filter: blur(110px);
+            opacity: .2;
+            content: "";
+            pointer-events: none;
+        }
+        .hero::before { top: -220px; right: -70px; background: #2563eb; }
+        .hero::after { bottom: -340px; left: 28%; background: #06b6d4; opacity: .12; }
+        .hero-layout { position: relative; z-index: 1; display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 66px; }
+        .hero-copy { max-width: 650px; }
+        .status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            border: 1px solid rgba(99, 186, 255, .2);
+            border-radius: 999px;
+            padding: 8px 13px;
+            color: #b5dfff;
+            background: rgba(31, 83, 156, .16);
+            font-size: .77rem;
+        }
+        .status-dot { width: 7px; height: 7px; border-radius: 50%; background: #22d3ee; box-shadow: 0 0 13px #22d3ee; }
+        h1 {
+            margin: 24px 0 20px;
+            font: 700 clamp(3rem, 6vw, 5.25rem)/1.02 var(--font-heading);
+            letter-spacing: -.065em;
+        }
+        .hero-copy > p { max-width: 600px; color: #b4bdd4; font-size: 1.1rem; line-height: 1.8; }
+        .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; margin-top: 30px; }
+        .hero-trust { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 32px; color: #9ba7c4; font-size: .78rem; }
+        .hero-trust i { margin-right: 7px; color: #57c8f3; }
+        .code-window {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(169, 193, 255, .19);
+            border-radius: 18px;
+            background: linear-gradient(145deg, rgba(18, 27, 60, .94), rgba(10, 16, 39, .92));
+            box-shadow: 0 28px 90px rgba(0, 0, 0, .35), 0 0 65px rgba(59, 130, 246, .13);
+            transform: perspective(1000px) rotateY(-4deg) rotateX(2deg);
+            animation: hover-window 7s ease-in-out infinite;
+        }
+        .window-bar { display: flex; align-items: center; gap: 7px; border-bottom: 1px solid var(--line); padding: 14px 17px; color: #8793b3; font: .7rem var(--font-code); }
+        .window-dot { width: 8px; height: 8px; border-radius: 50%; background: #53617f; }
+        .window-dot:first-child { background: #f87171; }
+        .window-dot:nth-child(2) { background: #fbbf24; }
+        .window-dot:nth-child(3) { background: #34d399; margin-right: 8px; }
+        .code-content { padding: 25px 24px 29px; color: #c6d2ee; font: .78rem/2 var(--font-code); }
+        .code-line { white-space: nowrap; }
+        .code-indent { padding-left: 24px; }
+        .code-purple { color: #c4a5ff; }
+        .code-blue { color: #70b7ff; }
+        .code-cyan { color: #6ee7e7; }
+        .code-green { color: #a3e6a1; }
+        .code-dim { color: #657394; }
+        .code-glow {
+            position: absolute;
+            right: -50px;
+            bottom: -65px;
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            background: rgba(6, 182, 212, .18);
+            filter: blur(55px);
+        }
+        @keyframes hover-window { 0%,100% { transform: perspective(1000px) rotateY(-4deg) rotateX(2deg) translateY(0); } 50% { transform: perspective(1000px) rotateY(-4deg) rotateX(2deg) translateY(-9px); } }
+        .about-section { border-top: 1px solid rgba(174,196,255,.08); background: linear-gradient(180deg, rgba(15, 22, 51, .76), rgba(10, 14, 39, 0)); }
+        .about-layout { display: grid; grid-template-columns: .7fr 1.3fr; gap: 74px; align-items: start; }
+        .about-aside { position: sticky; top: 114px; }
+        .about-aside h2 { margin: 13px 0; font: 600 clamp(2.3rem, 4vw, 3.3rem)/1.1 var(--font-heading); letter-spacing: -.05em; }
+        .about-body { color: #bdc6dc; font-size: 1rem; line-height: 1.9; }
+        .about-body p { margin: 0 0 20px; }
+        .trust-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 30px; }
+        .trust-badge { border: 1px solid var(--line); border-radius: 999px; padding: 9px 13px; background: rgba(255,255,255,.035); color: #c6d4f0; font-size: .75rem; }
+        .trust-badge i { margin-right: 7px; color: #4bd4e5; }
+        .services-section { background: #0c112c; }
+        .service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .service-card {
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 17px;
+            background: var(--surface-raised);
+            transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+        }
+        .service-card:hover { transform: translateY(-6px); border-color: rgba(65, 164, 255, .55); box-shadow: 0 20px 55px rgba(0, 0, 0, .24); }
+        .service-image { position: relative; height: 190px; overflow: hidden; }
+        .service-image::after { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(11, 16, 40, .88), transparent 76%); content: ""; }
+        .service-image img { width: 100%; height: 100%; object-fit: cover; opacity: .72; transition: transform .5s ease; }
+        .service-card:hover .service-image img { transform: scale(1.05); }
+        .service-icon { position: absolute; z-index: 1; bottom: 16px; left: 19px; display: grid; width: 43px; height: 43px; place-items: center; border: 1px solid rgba(111, 186, 255, .4); border-radius: 13px; color: #9ae8f1; background: rgba(13, 29, 67, .8); }
+        .service-copy { padding: 22px; }
+        .service-copy h3 { margin: 0 0 10px; font: 600 1.19rem/1.3 var(--font-heading); }
+        .service-copy p { min-height: 76px; margin: 0; color: var(--muted); font-size: .88rem; }
+        .feature-list { display: grid; gap: 9px; margin: 19px 0 0; padding: 18px 0 0; border-top: 1px solid var(--line); list-style: none; }
+        .feature-list li { color: #c1cbe2; font-size: .78rem; }
+        .feature-list i { width: 17px; color: #48c9e7; font-size: .7rem; }
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+        .process-card { position: relative; padding: 8px 22px 12px 0; }
+        .process-card:not(:last-child)::after { position: absolute; top: 31px; left: 59px; width: calc(100% - 67px); border-top: 1px dashed rgba(99, 156, 248, .35); content: ""; }
+        .step-top { position: relative; z-index: 1; display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+        .step-icon { display: grid; width: 49px; height: 49px; flex: none; place-items: center; border: 1px solid rgba(68, 148, 255, .34); border-radius: 14px; color: #7fd6f1; background: #101a3a; }
+        .step-number { color: #7482a8; font: .72rem var(--font-code); }
+        .process-card h3 { margin: 0 0 8px; font: 600 1.05rem var(--font-heading); }
+        .process-card p { margin: 0; color: var(--muted); font-size: .84rem; }
+        .why-section { background: linear-gradient(180deg, #0c112c, #0a0e27); }
+        .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        .why-card { min-height: 205px; border: 1px solid var(--line); border-radius: 15px; padding: 24px; background: rgba(255,255,255,.025); }
+        .why-card i { display: grid; width: 42px; height: 42px; place-items: center; border-radius: 12px; color: #8bdfff; background: rgba(59, 130, 246, .14); }
+        .why-card h3 { margin: 19px 0 8px; font: 600 1rem var(--font-heading); }
+        .why-card p { margin: 0; color: var(--muted); font-size: .81rem; }
+        .contact-section { padding-top: 40px; }
+        .contact-panel { display: grid; grid-template-columns: .9fr 1.1fr; overflow: hidden; border: 1px solid rgba(118, 160, 255, .19); border-radius: 21px; background: linear-gradient(135deg, #111a3a, #0d1430 58%, #0d1d3a); box-shadow: 0 25px 80px rgba(0,0,0,.22); }
+        .contact-intro { position: relative; padding: 43px; }
+        .contact-intro::after { position: absolute; right: -75px; bottom: -120px; width: 250px; height: 250px; border-radius: 50%; background: rgba(6,182,212,.12); filter: blur(65px); content: ""; }
+        .contact-intro h2 { margin: 15px 0; font: 600 clamp(2rem, 3.5vw, 2.75rem)/1.1 var(--font-heading); letter-spacing: -.045em; }
+        .contact-intro > p { color: #b0bbd4; }
+        .contact-details { position: relative; z-index: 1; display: grid; gap: 16px; margin-top: 31px; color: #c6d0e5; font-size: .88rem; }
+        .contact-details div { display: flex; align-items: flex-start; gap: 12px; }
+        .contact-details i { width: 18px; margin-top: 4px; color: #52d5e6; }
+        .contact-form-wrap { padding: 39px; background: rgba(7, 12, 31, .3); }
+        .contact-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .form-field { display: grid; gap: 7px; }
+        .form-field.full { grid-column: 1 / -1; }
+        .form-field label { color: #c8d3eb; font-size: .77rem; font-weight: 600; }
+        .form-field input, .form-field textarea {
+            width: 100%;
+            border: 1px solid rgba(161, 184, 239, .18);
+            border-radius: 10px;
+            padding: 12px 13px;
+            outline: none;
+            color: #f6f8ff;
+            background: rgba(5, 10, 27, .48);
+            font-size: .87rem;
+        }
+        .form-field input:focus, .form-field textarea:focus { border-color: #3b82f6; box-shadow: 0 0 0 3px rgba(59,130,246,.15); }
+        .form-field textarea { min-height: 115px; resize: vertical; }
+        .form-field ::placeholder { color: #687594; }
+        .contact-form .button { grid-column: 1 / -1; justify-self: start; }
+        .form-success { grid-column: 1 / -1; border: 1px solid rgba(52,211,153,.28); border-radius: 10px; padding: 12px 14px; color: #b7f7dc; background: rgba(16,185,129,.09); font-size: .86rem; }
+        footer { margin-top: 85px; border-top: 1px solid var(--line); background: rgba(5, 9, 26, .35); }
+        .footer-main { display: flex; justify-content: space-between; gap: 42px; padding: 42px 0 34px; }
+        .footer-brand { max-width: 360px; }
+        .footer-brand p { color: #939fbd; font-size: .84rem; }
+        .footer-links { display: flex; gap: 42px; }
+        .footer-column { display: grid; align-content: start; gap: 10px; color: #9aa7c4; font-size: .81rem; }
+        .footer-column strong { margin-bottom: 4px; color: #e6ecfa; font-size: .8rem; }
+        .footer-column a:hover { color: #77d8ee; }
+        .legal-line { border-top: 1px solid var(--line); padding: 17px 0 22px; color: #8591af; font-size: .72rem; text-align: center; }
+        .legal-line span { padding: 0 5px; color: #4e5c7d; }
+        @media (max-width: 900px) {
+            .hero-layout { grid-template-columns: 1fr; gap: 47px; }
+            .hero-copy { max-width: 740px; }
+            .code-window { width: min(650px, 100%); transform: none; animation: none; }
+            .service-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-grid { grid-template-columns: repeat(2, 1fr); gap: 30px 10px; }
+            .process-card:nth-child(2)::after { display: none; }
+            .why-grid { grid-template-columns: repeat(2, 1fr); }
+            .about-layout { gap: 42px; }
+        }
+        @media (max-width: 680px) {
+            .container { width: min(100% - 34px, 560px); }
+            .section { padding: 77px 0; }
+            .nav { min-height: 67px; }
+            .brand-name { font-size: .84rem; }
+            .brand-sub { font-size: .52rem; }
+            .menu-toggle { display: inline-flex; }
+            .nav-links {
+                position: absolute;
+                top: calc(100% + 1px);
+                left: 0;
+                right: 0;
+                display: none;
+                align-items: stretch;
+                gap: 0;
+                border-bottom: 1px solid var(--line);
+                padding: 8px 17px 18px;
+                background: rgba(10, 14, 39, .98);
+            }
+            .nav-links.open { display: flex; flex-direction: column; }
+            .nav-links > a:not(.button) { padding: 11px 5px; }
+            .nav-links .button { margin-top: 9px; }
+            .hero { min-height: 0; padding: 76px 0 78px; }
+            h1 { font-size: clamp(2.75rem, 13vw, 4rem); }
+            .hero-copy > p { font-size: 1rem; }
+            .hero-actions .button { width: 100%; }
+            .hero-trust { gap: 12px 17px; }
+            .code-content { overflow-x: auto; padding: 20px 17px; font-size: .68rem; }
+            .about-layout { grid-template-columns: 1fr; gap: 18px; }
+            .about-aside { position: static; }
+            .service-grid, .process-grid, .why-grid { grid-template-columns: 1fr; }
+            .service-copy p { min-height: auto; }
+            .process-card { padding: 0; }
+            .process-card::after { display: none; }
+            .step-top { margin-bottom: 13px; }
+            .contact-section { padding-top: 5px; }
+            .contact-panel { grid-template-columns: 1fr; }
+            .contact-intro, .contact-form-wrap { padding: 28px 23px; }
+            .contact-form { grid-template-columns: 1fr; }
+            .form-field.full, .contact-form .button, .form-success { grid-column: 1; }
+            .footer-main { flex-direction: column; padding-top: 34px; }
+            .footer-links { flex-wrap: wrap; gap: 25px 45px; }
+            .legal-line span { display: none; }
+            .legal-line { line-height: 1.8; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <nav class="nav container" aria-label="Main navigation">
+            <a class="brand" href="{{ url_for('index') }}" aria-label="Corevista Software home">
+                <span class="brand-mark"><i class="fa-solid fa-cube" aria-hidden="true"></i></span>
+                <span>
+                    <span class="brand-name">COREVISTA</span><br>
+                    <span class="brand-sub">SOFTWARE LLC</span>
+                </span>
+            </a>
+            <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false">
+                <i class="fa-solid fa-bars" aria-hidden="true"></i>
+            </button>
+            <div class="nav-links" id="nav-links">
+                <a href="#services">Services</a>
+                <a href="#about">About</a>
+                <a href="#process">How We Work</a>
+                <a href="#why-us">Why Corevista</a>
+                <a class="button button-primary" href="#contact">Partner With Us <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container hero-layout">
+                <div class="hero-copy">
+                    <div class="status-pill"><span class="status-dot"></span> Software engineering · AI enablement</div>
+                    <h1 id="hero-title">Engineering the <span class="gradient-text">Future of Software &amp; AI</span></h1>
+                    <p>We build advanced digital products and partner with AI innovators to engineer the systems, platforms, and workflows shaping what comes next.</p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="#services">Explore Services <i class="fa-solid fa-arrow-down" aria-hidden="true"></i></a>
+                        <a class="button button-secondary" href="#contact">Partner With Us <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="hero-trust">
+                        <span><i class="fa-solid fa-circle-check" aria-hidden="true"></i> New Jersey registered LLC</span>
+                        <span><i class="fa-solid fa-lock" aria-hidden="true"></i> Built for scale and reliability</span>
+                    </div>
+                </div>
+                <div class="code-window" aria-label="Decorative software code illustration">
+                    <div class="window-bar">
+                        <span class="window-dot"></span><span class="window-dot"></span><span class="window-dot"></span>
+                        <span>corevista / intelligent-systems.ts</span>
+                    </div>
+                    <div class="code-content" aria-hidden="true">
+                        <div class="code-line"><span class="code-purple">const</span> <span class="code-blue">future</span> = <span class="code-cyan">await</span> corevista.build({</div>
+                        <div class="code-line code-indent"><span class="code-blue">software</span>: <span class="code-green">"human-centered"</span>,</div>
+                        <div class="code-line code-indent"><span class="code-blue">intelligence</span>: {</div>
+                        <div class="code-line code-indent code-indent"><span class="code-blue">models</span>: <span class="code-green">"next-generation"</span>,</div>
+                        <div class="code-line code-indent code-indent"><span class="code-blue">training</span>: <span class="code-green">"precision-engineered"</span>,</div>
+                        <div class="code-line code-indent">},</div>
+                        <div class="code-line code-indent"><span class="code-blue">impact</span>: <span class="code-green">"built-to-scale"</span></div>
+                        <div class="code-line">});</div>
+                        <br>
+                        <div class="code-line"><span class="code-dim">// Technology, with purpose.</span></div>
+                        <div class="code-line"><span class="code-purple">return</span> future.<span class="code-cyan">ship</span>();<span class="code-dim">_</span></div>
+                    </div>
+                    <span class="code-glow"></span>
+                </div>
+            </div>
+        </section>
+
+        <section class="section about-section" id="about">
+            <div class="container about-layout">
+                <div class="about-aside">
+                    <span class="eyebrow">About Corevista</span>
+                    <h2>Precision engineering. <span class="gradient-text">Meaningful progress.</span></h2>
+                </div>
+                <div>
+                    <div class="about-body">
+                        {% for paragraph in about.split('\n\n') %}
+                        <p>{{ paragraph }}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="trust-badges" aria-label="Company registration details">
+                        <span class="trust-badge"><i class="fa-solid fa-building" aria-hidden="true"></i>New Jersey Registered LLC</span>
+                        <span class="trust-badge"><i class="fa-regular fa-calendar" aria-hidden="true"></i>Est. 2026</span>
+                        <span class="trust-badge"><i class="fa-solid fa-fingerprint" aria-hidden="true"></i>Entity #{{ company.entity_number }}</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section services-section" id="services">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">What we do</span>
+                    <h2>Technology built to <span class="gradient-text">move you forward.</span></h2>
+                    <p>From ambitious digital products to specialized AI engineering, we turn complex technology challenges into reliable solutions.</p>
+                </div>
+                <div class="service-grid">
+                    {% for service in services %}
+                    <article class="service-card">
+                        <div class="service-image">
+                            <img src="{{ service.image }}" alt="{{ service.name }} technology" loading="lazy">
+                            <span class="service-icon"><i class="fa-solid {{ service.icon }}" aria-hidden="true"></i></span>
+                        </div>
+                        <div class="service-copy">
+                            <h3>{{ service.name }}</h3>
+                            <p>{{ service.description }}</p>
+                            <ul class="feature-list">
+                                {% for feature in service.features %}
+                                <li><i class="fa-solid fa-check" aria-hidden="true"></i>{{ feature }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="process">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">How we work</span>
+                    <h2>A clear path from <span class="gradient-text">idea to impact.</span></h2>
+                    <p>We bring focus, technical depth, and thoughtful collaboration to every stage of the work.</p>
+                </div>
+                <div class="process-grid">
+                    {% for step in process_steps %}
+                    <article class="process-card">
+                        <div class="step-top">
+                            <span class="step-icon"><i class="fa-solid {{ step.icon }}" aria-hidden="true"></i></span>
+                            <span class="step-number">{{ step.number }}</span>
+                        </div>
+                        <h3>{{ step.title }}</h3>
+                        <p>{{ step.description }}</p>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="section why-section" id="why-us">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="eyebrow">Why Corevista</span>
+                    <h2>A partner for the <span class="gradient-text">next generation.</span></h2>
+                    <p>Engineering discipline meets an AI-first mindset, backed by accountable partnership and a commitment to dependable delivery.</p>
+                </div>
+                <div class="why-grid">
+                    {% for reason in reasons %}
+                    <article class="why-card">
+                        <i class="fa-solid {{ reason.icon }}" aria-hidden="true"></i>
+                        <h3>{{ reason.title }}</h3>
+                        <p>{{ reason.description }}</p>
+                    </article>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact-section" id="contact">
+            <div class="container contact-panel">
+                <div class="contact-intro">
+                    <span class="eyebrow">Start a conversation</span>
+                    <h2>Let’s build what’s <span class="gradient-text">next.</span></h2>
+                    <p>Tell us about your product, platform, or AI engineering needs. We’d like to hear what you’re working on.</p>
+                    <div class="contact-details">
+                        <div><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>{{ company.legal_name }}<br>40 Wantage Ave, Branchville, NJ 07890</span></div>
+                        <div><i class="fa-solid fa-fingerprint" aria-hidden="true"></i><span>New Jersey Entity #{{ company.entity_number }}</span></div>
+                    </div>
+                </div>
+                <div class="contact-form-wrap">
+                    <form class="contact-form" action="{{ url_for('contact') }}" method="post">
+                        {% if request.args.get('sent') %}
+                        <p class="form-success" role="status">Thank you for reaching out. We’ll be in touch soon.</p>
+                        {% endif %}
+                        <div class="form-field">
+                            <label for="home-name">Name</label>
+                            <input id="home-name" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+                        </div>
+                        <div class="form-field">
+                            <label for="home-email">Email</label>
+                            <input id="home-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+                        </div>
+                        <div class="form-field full">
+                            <label for="home-phone">Phone <span style="color:#8793b3;font-weight:400">(optional)</span></label>
+                            <input id="home-phone" name="phone" type="tel" autocomplete="tel" placeholder="+1 (555) 000-0000">
+                        </div>
+                        <div class="form-field full">
+                            <label for="home-message">How can we help?</label>
+                            <textarea id="home-message" name="message" placeholder="Share a little about your project or partnership idea..." required></textarea>
+                        </div>
+                        <button class="button button-primary" type="submit">Send Message <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-main">
+            <div class="footer-brand">
+                <a class="brand" href="{{ url_for('index') }}">
+                    <span class="brand-mark"><i class="fa-solid fa-cube" aria-hidden="true"></i></span>
+                    <span><span class="brand-name">COREVISTA</span><br><span class="brand-sub">SOFTWARE LLC</span></span>
+                </a>
+                <p>Engineering software and AI systems for a more capable digital future.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <strong>Explore</strong>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#process">How We Work</a>
+                </div>
+                <div class="footer-column">
+                    <strong>Connect</strong>
+                    <a href="#why-us">Why Corevista</a>
+                    <a href="#contact">Contact</a>
+                    <a href="{{ url_for('contact') }}">Contact page</a>
+                </div>
+            </div>
+        </div>
+        <div class="legal-line">
+            <div class="container">COREVISTA SOFTWARE LLC <span>•</span> NJ Entity #{{ company.entity_number }} <span>•</span> Registered 08/03/2026</div>
+        </div>
+    </footer>
+    <script>
+        const menuToggle = document.querySelector(".menu-toggle");
+        const navLinks = document.querySelector(".nav-links");
+        menuToggle.addEventListener("click", () => {
+            const isOpen = navLinks.classList.toggle("open");
+            menuToggle.setAttribute("aria-expanded", String(isOpen));
+            menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+        });
+        navLinks.addEventListener("click", (event) => {
+            if (event.target.closest("a")) {
+                navLinks.classList.remove("open");
+                menuToggle.setAttribute("aria-expanded", "false");
+                menuToggle.setAttribute("aria-label", "Open navigation menu");
+            }
+        });
+    </script>
+</body>
+</html>

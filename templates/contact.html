@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0a0e27">
+    <meta name="description" content="Contact COREVISTA SOFTWARE LLC about software development, AI engineering, digital platforms, and technology partnerships.">
+    <title>Contact COREVISTA SOFTWARE LLC — Software &amp; AI Engineering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root { color-scheme: dark; --bg: #0a0e27; --muted: #a5aec8; --line: rgba(174,196,255,.14); --blue: #3b82f6; --cyan: #06b6d4; }
+        * { box-sizing: border-box; }
+        body { min-height: 100vh; margin: 0; padding: 30px 18px; display: grid; place-items: center; color: #f7f9ff; background: radial-gradient(ellipse at 80% 8%, rgba(37,99,235,.19), transparent 36%), radial-gradient(ellipse at 10% 90%, rgba(6,182,212,.1), transparent 32%), var(--bg); font-family: Inter, sans-serif; }
+        a { color: inherit; text-decoration: none; }
+        .page { width: min(980px, 100%); }
+        .brand { display: inline-flex; align-items: center; gap: 11px; margin-bottom: 24px; }
+        .brand-mark { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid rgba(84,160,255,.55); border-radius: 12px; color: #8bdcff; background: linear-gradient(145deg, rgba(59,130,246,.3), rgba(6,182,212,.12)); }
+        .brand-name { font: 700 .95rem "Space Grotesk", sans-serif; letter-spacing: .07em; }
+        .brand-sub { color: #8590b0; font-size: .59rem; letter-spacing: .12em; }
+        .panel { display: grid; grid-template-columns: .9fr 1.1fr; overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: rgba(17,26,57,.8); box-shadow: 0 28px 90px rgba(0,0,0,.32); }
+        .info { padding: 38px; background: linear-gradient(145deg, rgba(26,48,95,.72), rgba(12,19,45,.76)); }
+        .eyebrow { color: #82c5ff; font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+        h1 { margin: 13px 0 10px; font: 600 clamp(2rem,4vw,2.75rem)/1.1 "Space Grotesk", sans-serif; letter-spacing: -.04em; }
+        .muted { color: var(--muted); font-size: .9rem; line-height: 1.7; }
+        .entity-card { margin-top: 27px; border: 1px solid rgba(155,185,255,.16); border-radius: 13px; padding: 18px; background: rgba(7,12,31,.32); }
+        .entity-card h2 { margin: 0 0 12px; font: 600 .91rem "Space Grotesk", sans-serif; }
+        .entity-row { display: grid; grid-template-columns: 110px 1fr; gap: 10px; padding: 9px 0; border-top: 1px solid rgba(174,196,255,.1); font-size: .75rem; }
+        .entity-row span:first-child { color: #8794b3; }
+        .entity-row span:last-child { color: #d6def0; }
+        .trust { display: inline-flex; align-items: center; gap: 8px; margin-top: 15px; color: #9debf0; font: .74rem "Space Grotesk", sans-serif; }
+        .form-wrap { padding: 38px; }
+        .form-wrap h2 { margin: 0 0 7px; font: 600 1.35rem "Space Grotesk", sans-serif; }
+        form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 23px; }
+        .field { display: grid; gap: 7px; }
+        .field.full, .form-actions, .notice { grid-column: 1 / -1; }
+        label { color: #c8d3eb; font-size: .77rem; font-weight: 600; }
+        input, textarea { width: 100%; border: 1px solid rgba(161,184,239,.18); border-radius: 9px; padding: 12px 13px; outline: none; color: #f6f8ff; background: rgba(5,10,27,.48); font: .86rem Inter, sans-serif; }
+        input:focus, textarea:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(59,130,246,.15); }
+        input::placeholder, textarea::placeholder { color: #687594; }
+        textarea { min-height: 125px; resize: vertical; }
+        .button { display: inline-flex; justify-content: center; align-items: center; gap: 10px; border: 0; border-radius: 10px; padding: 13px 19px; color: white; background: linear-gradient(110deg, #2563eb, #0891b2); box-shadow: 0 9px 32px rgba(37,99,235,.2); font: 700 .88rem Inter, sans-serif; cursor: pointer; }
+        .notice { border: 1px solid rgba(52,211,153,.28); border-radius: 9px; padding: 12px 14px; color: #b7f7dc; background: rgba(16,185,129,.09); font-size: .85rem; }
+        .notice.error { border-color: rgba(248,113,113,.3); color: #fecaca; background: rgba(239,68,68,.08); }
+        .back { display: inline-block; margin-top: 22px; color: #a9c5f0; font-size: .84rem; }
+        .back:hover { color: white; }
+        @media (max-width: 720px) { .panel { grid-template-columns: 1fr; } .info, .form-wrap { padding: 27px 23px; } }
+        @media (max-width: 480px) { body { padding: 20px 13px; } form { grid-template-columns: 1fr; } .field, .field.full, .form-actions, .notice { grid-column: 1; } .entity-row { grid-template-columns: 95px 1fr; } }
+    </style>
+</head>
+<body>
+    <main class="page">
+        <a class="brand" href="{{ url_for('index') }}" aria-label="Corevista Software home">
+            <span class="brand-mark"><i class="fa-solid fa-cube" aria-hidden="true"></i></span>
+            <span><span class="brand-name">COREVISTA</span><br><span class="brand-sub">SOFTWARE LLC</span></span>
+        </a>
+        <div class="panel">
+            <section class="info">
+                <span class="eyebrow">Let’s connect</span>
+                {% if success %}
+                <h1>Thank you{% if name %}, {{ name }}{% endif %}.</h1>
+                <p class="muted">{{ message }}</p>
+                {% else %}
+                <h1>Build what’s next.</h1>
+                <p class="muted">Reach out about software development, AI engineering, platforms, or a strategic partnership.</p>
+                {% endif %}
+                <div class="entity-card">
+                    <h2>{{ company.legal_name }}</h2>
+                    <div class="entity-row"><span>Entity #</span><span>{{ company.entity_number }}</span></div>
+                    <div class="entity-row"><span>Registered</span><span>{{ company.registered }}</span></div>
+                    <div class="entity-row"><span>Office</span><span>{{ company.registered_office }}</span></div>
+                    <div class="entity-row"><span>Agent</span><span>{{ company.registered_agent }}</span></div>
+                    <div class="entity-row"><span>Purpose</span><span>{{ company.business_purpose }}</span></div>
+                    <div class="trust"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> New Jersey Registered LLC</div>
+                </div>
+                <a class="back" href="{{ url_for('index') }}"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Back to COREVISTA</a>
+            </section>
+            <section class="form-wrap">
+                {% if success %}
+                <h2>Message received</h2>
+                <p class="muted">Your inquiry has been received. Our team will follow up soon.</p>
+                {% else %}
+                <h2>Contact our team</h2>
+                <p class="muted">Share a few details and we’ll be in touch.</p>
+                <form action="{{ url_for('contact') }}" method="post">
+                    {% if error %}<p class="notice error" role="alert">{{ error }}</p>{% endif %}
+                    <div class="field">
+                        <label for="name">Name</label>
+                        <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name" value="{{ form_data.get('name', '') }}" required>
+                    </div>
+                    <div class="field">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" autocomplete="email" placeholder="you@company.com" value="{{ form_data.get('email', '') }}" required>
+                    </div>
+                    <div class="field full">
+                        <label for="phone">Phone <span style="color:#8793b3;font-weight:400">(optional)</span></label>
+                        <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+1 (555) 000-0000" value="{{ form_data.get('phone', '') }}">
+                    </div>
+                    <div class="field full">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your project or partnership..." required>{{ form_data.get('message', '') }}</textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button class="button" type="submit">Send Message <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+                    </div>
+                </form>
+                {% endif %}
+            </section>
+        </div>
+    </main>
+</body>
+</html>
