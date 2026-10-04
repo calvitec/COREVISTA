@@ -9,6 +9,9 @@ COMPANY_INFO = {
     "registered": "New Jersey, USA (08/03/2026)",
     "registered_agent": "Michael Lanza",
     "registered_office": "40 Wantage Ave, Branchville, New Jersey 07890",
+    "email": "corevistasoftwares@gmail.com",
+    "phone": "8502285378",
+    "whatsapp": "+254 799 159620",
     "business_purpose": (
         "To develop, license, market, and support software applications, "
         "digital platforms, and technology solutions for businesses and consumers."
